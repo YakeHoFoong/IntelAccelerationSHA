@@ -1,5 +1,40 @@
-Intel(R) Intelligent Storage Acceleration Library Crypto Version
-================================================================
+SPDX-FileCopyrightText: © 2021 Yake Ho Foong
+SPDX-FileCopyrightText: Copyright(c) 2011-2017 Intel Corporation All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause
+
+Intel(R) Intelligent Storage Acceleration Library Crypto Version - Modified for Cryptocurrency Use  
+==================================================================================================  
+
+The reason for creating this fork is to create a library that is more suitable for cryptocurrency use cases.
+
+To compile the C++ and assembly code:
+* Windows x86-64: open the solution file in Visual Studio. Unit tests are included (need to have Visual Studio and NASM installed)
+* Linux x86-64: run 'make -B' in a shell in the subfolder C_SHA256_x64/C_SHA256_x64_Lib (need to have GCC and NASM installed)
+* Mac: not implemented
+
+The ".asm" files are modified from Intel's files, except for "sha256_mb_xx_wrapper.asm" which was written by the author for this project. Once compiled by NASM, the functions below are available to the C code:
+* sha256_mb_x16_avx512
+* sha256_mb_x8_avx2
+* sha256_mb_x4_avx
+* sha256_mb_x4_sse
+* sha256_sha_sse41
+
+Note that "sha256_sha_sse41" is the SHA NI instructions i.e. the fastest extended instruction set to process SHA256.
+
+
+As an example of usage, the library file mine_xcoin.cpp is provided. It takes a digest (an array of bytes) and a difficulty as inputs, and returns a nonce as output. The nonce is any value that satisfies SHA256(digest appended by nonce) <= difficulty. The size of the digest is fixed by the constants in the file mine_xcoin.h, DIGEST_NUM_WORDS and DIGEST_WORD_SIZE_BYTES. The compiled binary output file is a ".DLL" file in Windows and a ".so" file in Linux. This example C++ shared library is multithreaded.
+
+
+The file "c_sha256_lib.py" allows the user to call the libraries above (both Windows and Linux) from Python. It also serves as an example of how to use this library.
+
+
+As an illustration of how much these extended instruction sets can accelerate the calculations of SHA256 hashes in cryptocurrencies, refer to the graph below. Note that the Y-axis is in logarithmic scale.  
+
+![Graph of hashing speed under various codes](https://github.com/YakeHoFoong/IntelAccelerationSHA/blob/master/Graph.svg) 
+
+
+Below is the original Intel README.MD.
+==================================================================================================  
 
 ISA-L_crypto is a collection of optimized low-level functions targeting storage
 applications.  ISA-L_crypto includes:
