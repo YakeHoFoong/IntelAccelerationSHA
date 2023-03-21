@@ -1,6 +1,9 @@
 SPDX-FileCopyrightText: © 2021 Yake Ho Foong
+
 SPDX-FileCopyrightText: Copyright(c) 2011-2017 Intel Corporation All rights reserved.
+
 SPDX-License-Identifier: BSD-3-Clause
+
 
 Intel(R) Intelligent Storage Acceleration Library Crypto Version - Modified for Cryptocurrency Use  
 ==================================================================================================  
