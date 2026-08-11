@@ -16,7 +16,6 @@ User-agent: Anomura
 User-agent: anthropic-ai
 User-agent: ApifyBot
 User-agent: ApifyWebsiteContentCrawler
-User-agent: Applebot
 User-agent: Applebot-Extended
 User-agent: Aranet-SearchBot
 User-agent: atlassian-bot
@@ -24,6 +23,7 @@ User-agent: Awario
 User-agent: AzureAI-SearchBot
 User-agent: bedrockbot
 User-agent: bigsur.ai
+User-agent: Bingbot
 User-agent: Bravebot
 User-agent: Brightbot
 User-agent: Brightbot 1.0
@@ -162,5 +162,14 @@ User-agent: YandexAdditionalBot
 User-agent: YiyanBot
 User-agent: YouBot
 User-agent: ZanistaBot
+Disallow: /
+
+User-agent: Applebot
+User-agent: Baiduspider
+User-agent: DuckDuckBot
+User-agent: Googlebot
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
+Disallow:
+
 User-agent: *
 Disallow: /
